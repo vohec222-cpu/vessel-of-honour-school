@@ -10,13 +10,13 @@
    ========================================================= */
 
 :root {
-    --primary: #123b2a;
-    --primary-dark: #09271c;
-    --primary-light: #1d5a40;
+    --primary: #102d67;
+    --primary-dark: #071a42;
+    --primary-light: #28509a;
 
-    --gold: #c9a227;
-    --gold-light: #e4c75c;
-    --gold-dark: #9d7b12;
+    --gold: #e5b52b;
+    --gold-light: #ffd76a;
+    --gold-dark: #a87508;
 
     --text: #17201b;
     --text-soft: #647069;
@@ -53,12 +53,12 @@
    ========================================================= */
 
 [data-theme="dark"] {
-    --primary: #3f9b70;
-    --primary-dark: #102b20;
-    --primary-light: #5bb88b;
+    --primary: #315ca8;
+    --primary-dark: #0b1935;
+    --primary-light: #6d91d5;
 
-    --gold: #d7b63e;
-    --gold-light: #f0d66e;
+    --gold: #e5b52b;
+    --gold-light: #ffdf83;
 
     --text: #edf3ef;
     --text-soft: #b4c0b9;
@@ -2070,5 +2070,255 @@ body {
 
     .real-school-photos .card-body {
         padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   PROFESSIONAL GRADIENTS FOR SCHOOL AND STUDENT PHOTOGRAPHS
+   ========================================================= */
+
+/* Image cards: keep the gradient over the photo, not behind it */
+.about-image,
+.real-school-photos .about-image,
+.gallery-item,
+.photo-card,
+.image-card,
+.school-life-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 18px;
+}
+
+.about-image img,
+.real-school-photos img,
+.gallery-item img,
+.photo-card img,
+.image-card img,
+.school-life-card img {
+    display: block;
+    width: 100%;
+    transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+/* Navy gradient that blends naturally into the photograph */
+.about-image::after,
+.real-school-photos .about-image::after,
+.gallery-item::after,
+.photo-card::after,
+.image-card::after,
+.school-life-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        rgba(7, 26, 66, 0.03) 0%,
+        rgba(7, 26, 66, 0.10) 42%,
+        rgba(7, 26, 66, 0.78) 100%
+    );
+    transition: opacity 0.35s ease;
+}
+
+/* Subtle photo movement on hover */
+.about-image:hover img,
+.gallery-item:hover img,
+.photo-card:hover img,
+.image-card:hover img,
+.school-life-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Keep captions above the gradient */
+.about-image figcaption,
+.gallery-item figcaption,
+.photo-card figcaption,
+.image-card figcaption,
+.school-life-card figcaption,
+.gallery-item .image-caption,
+.photo-card .image-caption,
+.image-card .image-caption,
+.school-life-card .image-caption {
+    position: relative;
+    z-index: 2;
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .about-image img,
+    .gallery-item img,
+    .photo-card img,
+    .image-card img,
+    .school-life-card img {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   PREMIUM NAVY AND GOLD HERO UPGRADE
+   ========================================================= */
+
+.hero {
+    isolation: isolate;
+    min-height: clamp(620px, 78vh, 820px);
+    background: #071a42;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.015);
+    animation: hero-image-settle 1.2s ease-out both;
+}
+
+.hero-overlay {
+    background:
+        radial-gradient(
+            ellipse at 78% 48%,
+            rgba(229, 181, 43, 0.13) 0%,
+            transparent 42%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(5, 18, 48, 0.96) 0%,
+            rgba(7, 26, 66, 0.87) 42%,
+            rgba(7, 26, 66, 0.53) 72%,
+            rgba(7, 26, 66, 0.32) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(7, 26, 66, 0.40),
+            transparent 45%
+        );
+}
+
+.hero-content {
+    max-width: 780px;
+    padding-top: clamp(80px, 10vh, 120px);
+    padding-bottom: clamp(80px, 10vh, 120px);
+}
+
+.hero-eyebrow {
+    color: #ffdf83;
+    letter-spacing: 2.5px;
+    line-height: 1.7;
+}
+
+.hero h1 {
+    max-width: 760px;
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: clamp(3rem, 6.5vw, 5.4rem);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -1.8px;
+    text-shadow: 0 5px 28px rgba(0, 0, 0, 0.24);
+    text-wrap: balance;
+}
+
+.hero p {
+    max-width: 620px;
+    margin-top: 25px;
+    color: rgba(255, 255, 255, 0.91);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.85;
+}
+
+.hero-actions {
+    gap: 15px;
+    margin-top: 34px;
+}
+
+.hero-actions .btn {
+    min-height: 54px;
+    padding: 15px 23px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.hero-actions .btn-primary {
+    background: linear-gradient(135deg, #f5cf5c, #dba51c);
+    color: #101f3d;
+    border: 1px solid rgba(255, 223, 131, 0.75);
+    box-shadow: 0 10px 28px rgba(205, 155, 23, 0.23);
+}
+
+.hero-actions .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 34px rgba(205, 155, 23, 0.32);
+}
+
+.hero-actions .btn-light {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(8px);
+}
+
+.hero-actions .btn-light:hover {
+    background: rgba(255, 255, 255, 0.17);
+    transform: translateY(-3px);
+}
+
+@keyframes hero-image-settle {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1.015); }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 590px;
+    }
+
+    .hero-background img {
+        object-position: 58% center;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(5, 18, 48, 0.91),
+                rgba(7, 26, 66, 0.70)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(7, 26, 66, 0.56),
+                transparent
+            );
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .hero-actions .btn {
+        min-height: 52px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-background img {
+        animation: none;
+        transform: none;
+    }
+
+    .hero-actions .btn {
+        transition: none;
     }
 }
